@@ -27,7 +27,6 @@ export default function Home() {
     }
     let result = chanceArray[Math.floor(Math.random() * chanceArray.length)]
     setResult(result)
-    console.log(result)
   }
   
 
