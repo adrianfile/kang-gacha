@@ -4,7 +4,7 @@ import { useState } from 'react'
 export default function Home() {
   
   var [percent, setPercent] = useState(0)
-  var [result, setResult] = useState("Belum Mencoba Gacha")
+  var [result, setResult] = useState("Belum Mencoba ngeGacha")
   var AuthButton
 
   const handleClick = event => {
@@ -12,7 +12,7 @@ export default function Home() {
     event.preventDefault()
     setPercent(Math.floor(Math.random() * 100))
     console.log(percent)
-    setResult("Belum Mencoba Gacha")
+    setResult("Belum Mencoba ngeGacha")
   }
 
   const chanceWinnings = event => {
