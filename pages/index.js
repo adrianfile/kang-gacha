@@ -1,65 +1,70 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import { useState } from 'react'
 
 export default function Home() {
+  
+  var [percent, setPercent] = useState(0)
+  var [result, setResult] = useState("Belum Mencoba Gacha")
+  var AuthButton
+
+  const handleClick = event => {
+    
+    event.preventDefault()
+    setPercent(Math.floor(Math.random() * 100))
+    console.log(percent)
+    setResult("Belum Mencoba Gacha")
+  }
+
+  const chanceWinnings = event => {
+    event.preventDefault()
+    let chanceArray = []
+    for(var i = 0; i < 100; i++) {
+      if(i <= percent) {
+        chanceArray.push('Menang 🎉')
+      } else {
+        chanceArray.push('Kalah 😓')
+      }
+    }
+    let result = chanceArray[Math.floor(Math.random() * chanceArray.length)]
+    setResult(result)
+    console.log(result)
+  }
+  
+
+  if(percent === 0) {
+     AuthButton = <button className="block px-5 rounded-full border-indigo-800 mt-10 border mx-auto justify-center" 
+                      onClick={handleClick}>
+                      Click on me
+                  </button>
+    
+  } else {
+    AuthButton = <><button className="block px-5 rounded-full border-indigo-800 mt-10 border mx-auto justify-center"
+                           onClick={chanceWinnings}>
+                    Apakah bisa dapat hadiah ?
+                  </button>
+                  <button className="block px-5 rounded-full border-indigo-800 mt-10 border mx-auto justify-center" 
+                          onClick={handleClick}>
+                    Ulangi ?
+                  </button>
+                </>
+  }
+
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+    <div class="my-64">
+      <div>
+        <Head>
+          <title>Gacha</title>
+        </Head>
+      </div>
+      <div className="block">
+          <p className="text-center">Apakah wangi atau tidak tangan kalian untuk ngegacha ?</p>
+          <div className="mx-auto mt-10 border border-blue-600 rounded-full h-32 w-32 ">
+            <p className="my-11 text-center text-2xl">{percent}%</p>
+          </div>
+          <p className="pt-5 text-center">Kamu {result}</p>
+          {AuthButton}
+          
+      </div>
     </div>
   )
 }
