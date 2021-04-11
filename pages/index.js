@@ -20,9 +20,9 @@ export default function Home() {
     let chanceArray = []
     for(var i = 0; i < 100; i++) {
       if(i <= percent) {
-        chanceArray.push('Menang 🎉')
+        chanceArray.push('Dapat 🎉')
       } else {
-        chanceArray.push('Kalah 😓')
+        chanceArray.push('Tak Dapat 😓')
       }
     }
     let result = chanceArray[Math.floor(Math.random() * chanceArray.length)]
