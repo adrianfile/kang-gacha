@@ -1,5 +1,5 @@
 Web untuk mencari Rate Gacha kalian walaupun Boongan wowkowkwowk.
-Dibuat dengan Next.JS padahal ada React wkowkwow
+Dibuat dengan Next.JS padahal pake Lib React aja udh kelar wkowkwow
 
 ## Getting Started
 
